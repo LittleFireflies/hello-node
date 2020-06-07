@@ -1,0 +1,14 @@
+steps:
+- name: 'gcr.io/cloud-builders/docker'
+  args: ['build', '-t', 'gcr.io/my-playground-230006/hello-node', '.']
+- name: 'gcr.io/cloud-builders/docker'
+  args: ['run', 'gcr.io/my-playground-230006/hello-node', 'npm', 'run', 'test']
+- name: 'gcr.io/cloud-builders/docker'
+  args: ['push', 'gcr.io/my-playground-230006/hello-node']
+- name: 'gcr.io/cloud-builders/gcloud'
+  args: ['run', 'deploy', 'hello-node', '--image=gcr.io/my-playground-230006/hello-node', '--region', 'asia-northeast1', '--platform=managed', '--allow-unauthenticated']
+# # Google App Engine
+# - name: 'gcr.io/cloud-builders/npm'
+#   args: ['run', 'test']
+# - name: 'gcr.io/cloud-builders/gcloud'
+#   args: ['app', 'deploy']
