@@ -1,9 +1,9 @@
-require('@google-cloud/debug-agent').start()
+require('@google-cloud/debug-agent').start({allowExpressions: true})
 const express = require('express')
 const app = express()
 
 app.get('/', (req, res) => {
-    res.send('<h1>Hello World 3</h1>')
+    res.send('<h1>Hello World 4</h1>')
 })
 
 app.get('/hello', (req, res) => {
